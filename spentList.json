@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "name": "午餐",
+      "category": "餐飲食品",
+      "date": "",
+      "amount": 60
+    },
+    {
+      "name": "晚餐",
+      "category": "餐飲食品",
+      "date": "",
+      "amount": 60
+    },
+    {
+      "name": "電影:驚奇隊長",
+      "category": "交通出行",
+      "date": "",
+      "amount": 100
+    },
+    {
+      "name": "捷運",
+      "category": "休閒娛樂",
+      "date": "",
+      "amount": 200
+    },
+    {
+      "name": "租金",
+      "category": "家居物業",
+      "date": "2019/05/01",
+      "amount": 20000
+    },
+    {
+      "name": "英文補習費",
+      "category": "其它",
+      "date": "",
+      "amount": 15000
+    }
+  ]
+}

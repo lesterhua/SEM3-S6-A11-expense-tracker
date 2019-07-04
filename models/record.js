@@ -19,15 +19,14 @@ const recordSchema = new Schema({
     require: true
   },
   totalAmount: {
-    type: Number,
-    required: true
-  },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: "user",
-    index: true,
-    required: true
+    type: Number
   }
+  // userId: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "User",
+  //   index: true,
+  //   required: true
+  // }
 });
 
 module.exports = mongoose.model("Record", recordSchema);
