@@ -9,11 +9,10 @@ mongoose.connect("mongodb://localhost/record", {
   useNewUrlParser: true,
   useCreateIndex: true
 });
-
 const db = mongoose.connection;
 
 db.on("error", () => {
-  console.log("mongodb error");
+  console.log("mongodb errors");
 });
 
 db.once("open", () => {
