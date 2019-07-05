@@ -19,9 +19,8 @@ db.once("open", () => {
   console.log("mongodb connected!");
 });
 
-app.get("/", (req, res) => {
-  res.send("accounting");
-});
+app.use("/", require("./routes/home"));
+app.use("/records", require("./routes/record"));
 
 app.listen(port, (req, res) => {
   console.log(`The app server is running on :http://localhost:${port}`);
