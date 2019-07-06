@@ -1,1 +1,48 @@
-<h2>index pages</h2>
+<div class="col-md-10 m-auto">
+
+  <div class="row mb-3" id="totalAmount">
+    <div class="col">
+      <p class="lead">總金額:</p>
+    </div>
+    <div class="col">
+      <h1 class="text-danger display-4">
+        {{this.totalAmount}} 元
+      </h1>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-bod">
+      <ul class="list-group">
+        {{#each record}}
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2 mr-2">
+              {{#switch this.category}}
+              {{#case '家居物業'}} <i class="fas fa-home fa-5x"></i> {{/case}}
+              {{#case '交通出行'}} <i class="fas fa-shuttle-van fa-5x"></i> {{/case}}
+              {{#case '休閒娛樂'}} <i class="fas fa-grin-beam fa-5x"></i> {{/case}}
+              {{#case '餐飲食品'}} <i class="fas fa-utensils fa-5x"></i> {{/case}}
+              {{#case '其它'}} <i class="fas fa-pen fa-5x"></i> {{/case}}
+              {{/switch}}
+            </div>
+            <div class="col-3 mr-auto">
+              <p>{{this.name}}</p>
+              <p>{{this.date}}</p>
+            </div>
+            <div class="col-auto mr-auto">
+              <p>{{this.amount}}</p>
+            </div>
+            <div class="col-auto" style="margin: auto 0;">
+              <a href="/records/:id/edit" class="btn btn-success mr-2">編輯</a>
+              <form action="/records/:id/delete" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger">刪除</button>
+              </form>
+            </div>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
