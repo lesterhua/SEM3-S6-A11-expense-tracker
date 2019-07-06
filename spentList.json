@@ -3,37 +3,37 @@
     {
       "name": "午餐",
       "category": "餐飲食品",
-      "date": "",
+      "date": "2019-06-01",
       "amount": 60
     },
     {
       "name": "晚餐",
       "category": "餐飲食品",
-      "date": "",
+      "date": "2019-06-02",
       "amount": 60
     },
     {
       "name": "電影:驚奇隊長",
       "category": "交通出行",
-      "date": "",
+      "date": "2019-06-03",
       "amount": 100
     },
     {
       "name": "捷運",
       "category": "休閒娛樂",
-      "date": "",
+      "date": "2019-06-05",
       "amount": 200
     },
     {
       "name": "租金",
       "category": "家居物業",
-      "date": "2019/05/01",
+      "date": "2019-06-03",
       "amount": 20000
     },
     {
       "name": "英文補習費",
       "category": "其它",
-      "date": "",
+      "date": "2019-06-04",
       "amount": 15000
     }
   ]

@@ -10,16 +10,13 @@ const recordSchema = new Schema({
     type: String,
     required: true
   },
-  Date: {
-    type: Date,
-    default: Date.now
+  date: {
+    type: String,
+    required: true
   },
   amount: {
     type: Number,
     require: true
-  },
-  totalAmount: {
-    type: Number
   }
   // userId: {
   //   type: Schema.Types.ObjectId,
