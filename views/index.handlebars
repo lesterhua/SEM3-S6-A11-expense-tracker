@@ -35,7 +35,7 @@
               <p>{{this.amount}}</p>
             </div>
             <div class="col-auto" style="margin: auto 0;">
-              <a href="/records/:id/edit" class="btn btn-success mr-2">編輯</a>
+              <a href="/records/{{this.id}}/edit" class="btn btn-success mr-2">編輯</a>
               <form action="/records/:id/delete" method="POST" style="display:inline;">
                 <button type="submit" class="btn btn-danger">刪除</button>
               </form>
