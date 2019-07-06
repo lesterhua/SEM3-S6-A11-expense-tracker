@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const Record = require("./models/record");
 const exphbs = require("express-handlebars");
+const bodyParser = require("body-parser");
 require("./handlebars-helpers");
 
 const port = 3000;
@@ -23,6 +24,9 @@ db.once("open", () => {
 //handlebars setting
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+//body-parser
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //routers
 app.use("/", require("./routes/home"));
