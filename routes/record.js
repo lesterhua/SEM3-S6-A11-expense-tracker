@@ -21,7 +21,11 @@ router.post("/new", (req, res) => {
 });
 
 router.get("/:id/edit", (req, res) => {
-  res.send("edit page");
+  console.log("req.params.id", req.params.id);
+  Record.findById(req.params.id, (err, record) => {
+    if (err) return console.error(err);
+    return res.render("edit", { record });
+  });
 });
 
 router.post("/:id/edit", (req, res) => {
