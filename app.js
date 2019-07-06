@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const Record = require("./models/record");
 const exphbs = require("express-handlebars");
+require("./handlebars-helpers");
 
 const port = 3000;
 
