@@ -29,7 +29,18 @@ router.get("/:id/edit", (req, res) => {
 });
 
 router.post("/:id/edit", (req, res) => {
-  res.send("edit action");
+  Record.findById(req.params.id, (err, record) => {
+    if (err) return console.error(err);
+    record.name = req.body.name;
+    record.category = req.body.category;
+    record.date = req.body.date;
+    record.amount = req.body.amount;
+
+    record.save(err => {
+      if (err) return console.error(err);
+      return res.redirect("/");
+    });
+  });
 });
 
 router.post("/:id/delete", (req, res) => {
