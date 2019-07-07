@@ -4,7 +4,7 @@ const Record = require("../models/record");
 const { authenticated } = require("../config/auth");
 
 router.get("/", authenticated, (req, res) => {
-  Record.find((err, record) => {
+  Record.find({ userId: req.user._id }, (err, record) => {
     if (err) return console.error(err);
 
     let totalAmount = 0;

@@ -13,7 +13,8 @@ router.post("/new", authenticated, (req, res) => {
     name: req.body.name,
     category: req.body.category,
     date: req.body.date,
-    amount: req.body.amount
+    amount: req.body.amount,
+    userId: req.user._id
   });
   record.save(err => {
     if (err) return console.error(err);
@@ -23,35 +24,44 @@ router.post("/new", authenticated, (req, res) => {
 
 router.get("/:id/edit", authenticated, (req, res) => {
   console.log("req.params.id", req.params.id);
-  Record.findById(req.params.id, (err, record) => {
-    if (err) return console.error(err);
-    return res.render("edit", { record });
-  });
+  Record.findOne(
+    { _id: req.params.id, userId: req.user._id },
+    (err, record) => {
+      if (err) return console.error(err);
+      return res.render("edit", { record });
+    }
+  );
 });
 
 router.put("/:id/edit", authenticated, (req, res) => {
-  Record.findById(req.params.id, (err, record) => {
-    if (err) return console.error(err);
-    record.name = req.body.name;
-    record.category = req.body.category;
-    record.date = req.body.date;
-    record.amount = req.body.amount;
-
-    record.save(err => {
+  Record.findOne(
+    { _id: req.params.id, userId: req.user._id },
+    (err, record) => {
       if (err) return console.error(err);
-      return res.redirect("/");
-    });
-  });
+      record.name = req.body.name;
+      record.category = req.body.category;
+      record.date = req.body.date;
+      record.amount = req.body.amount;
+
+      record.save(err => {
+        if (err) return console.error(err);
+        return res.redirect("/");
+      });
+    }
+  );
 });
 
 router.delete("/:id/delete", authenticated, (req, res) => {
-  Record.findById(req.params.id, (err, record) => {
-    if (err) return console.error(err);
-    record.remove(err => {
+  Record.findOne(
+    { _id: req.params.id, userId: req.user._id },
+    (err, record) => {
       if (err) return console.error(err);
-      return res.redirect("/");
-    });
-  });
+      record.remove(err => {
+        if (err) return console.error(err);
+        return res.redirect("/");
+      });
+    }
+  );
 });
 
 router.get("/filter", authenticated, (req, res) => {
@@ -62,6 +72,7 @@ router.get("/filter", authenticated, (req, res) => {
   const filterCategoryRegExp = new RegExp(filterCategory, "i");
 
   Record.find({
+    userId: req.user._id,
     date: {
       $regex: filterMonthRegExp
     },
