@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Record = require("../models/record");
+const { authenticated } = require("../config/auth");
 
-router.get("/new", (req, res) => {
+router.get("/new", authenticated, (req, res) => {
   res.render("new");
 });
 
-router.post("/new", (req, res) => {
+router.post("/new", authenticated, (req, res) => {
   console.log("req.body", req.body);
   const record = new Record({
     name: req.body.name,
@@ -20,7 +21,7 @@ router.post("/new", (req, res) => {
   });
 });
 
-router.get("/:id/edit", (req, res) => {
+router.get("/:id/edit", authenticated, (req, res) => {
   console.log("req.params.id", req.params.id);
   Record.findById(req.params.id, (err, record) => {
     if (err) return console.error(err);
@@ -28,7 +29,7 @@ router.get("/:id/edit", (req, res) => {
   });
 });
 
-router.put("/:id/edit", (req, res) => {
+router.put("/:id/edit", authenticated, (req, res) => {
   Record.findById(req.params.id, (err, record) => {
     if (err) return console.error(err);
     record.name = req.body.name;
@@ -43,7 +44,7 @@ router.put("/:id/edit", (req, res) => {
   });
 });
 
-router.delete("/:id/delete", (req, res) => {
+router.delete("/:id/delete", authenticated, (req, res) => {
   Record.findById(req.params.id, (err, record) => {
     if (err) return console.error(err);
     record.remove(err => {
@@ -53,7 +54,7 @@ router.delete("/:id/delete", (req, res) => {
   });
 });
 
-router.get("/filter", (req, res) => {
+router.get("/filter", authenticated, (req, res) => {
   console.log(req.query);
   const filterMonth = req.query.month || "";
   const filterCategory = req.query.category || "";
