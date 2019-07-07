@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Record = require("./models/record");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
 require("./handlebars-helpers");
 
 const port = 3000;
@@ -27,6 +28,9 @@ app.set("view engine", "handlebars");
 
 //body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//method-override
+app.use(methodOverride("_method"));
 
 //routers
 app.use("/", require("./routes/home"));
