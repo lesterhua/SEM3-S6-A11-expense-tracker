@@ -35,6 +35,7 @@ app.use(methodOverride("_method"));
 //routers
 app.use("/", require("./routes/home"));
 app.use("/records", require("./routes/record"));
+app.use("/users", require("./routes/user"));
 
 app.listen(port, (req, res) => {
   console.log(`The app server is running on :http://localhost:${port}`);
