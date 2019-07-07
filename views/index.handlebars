@@ -1,12 +1,59 @@
 <div class="col-md-10 m-auto">
 
+  <div class="row mb-5 justify-content-center">
+    <div class="col-3">
+      <div class="dropdown">
+        <button class="btn btn-outline-primary btn-block dropdown-toggle" type="button" id="dropdownButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">月份</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownButton">
+          {{#if filterMonth}}
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month={{filterCategory}}&category=">全部</a>
+          {{/if}}
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month=01&category={{filterCategory}}">一月</a>
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month=02&category={{filterCategory}}">二月</a>
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month=03&category={{filterCategory}}">三月</a>
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month=04&category={{filterCategory}}">四月</a>
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month=05&category={{filterCategory}}">五月</a>
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month=06&category={{filterCategory}}">六月</a>
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month=07&category={{filterCategory}}">七月</a>
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month=08&category={{filterCategory}}">八月</a>
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month=09&category={{filterCategory}}">九月</a>
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month=10&category={{filterCategory}}">十月</a>
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month=11&category={{filterCategory}}">十一月</a>
+          <a class="dropdown-item monthDropdownItem" href="/records/filter?month=12&category={{filterCategory}}">十二月</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="dropdown">
+        <button class="btn btn-outline-primary btn-block dropdown-toggle" type="button" id="dropdownButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">類別</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownButton">
+          {{#if filterCategory}}
+          <a class="dropdown-item categoryDropdownItem" href="/records/filter?category=&month={{filterMonth}}">全部</a>
+          {{/if}}
+          <a class="dropdown-item categoryDropdownItem"
+            href="/records/filter?category=家居物業&month={{filterMonth}}">家居物業</a>
+          <a class="dropdown-item categoryDropdownItem"
+            href="/records/filter?category=交通出行&month={{filterMonth}}">交通出行</a>
+          <a class="dropdown-item categoryDropdownItem"
+            href="/records/filter?category=休閒娛樂&month={{filterMonth}}">休閒娛樂</a>
+          <a class="dropdown-item categoryDropdownItem"
+            href="/records/filter?category=餐飲食品&month={{filterMonth}}">餐飲食品</a>
+          <a class="dropdown-item categoryDropdownItem" href="/records/filter?category=其它&month={{filterMonth}}">其它</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="row mb-3" id="totalAmount">
     <div class="col">
       <p class="lead">總金額:</p>
     </div>
     <div class="col">
       <h1 class="text-danger display-4">
-        {{this.totalAmount}} 元
+        {{this.totalAmount}}
       </h1>
     </div>
   </div>
@@ -17,7 +64,7 @@
         {{#each record}}
         <li class="list-group-item">
           <div class="row">
-            <div class="col-2 mr-2">
+            <div class="col-2 mr-2" style="font-size: 12px;     margin: auto 0; color: #0062cc;">
               {{#switch this.category}}
               {{#case '家居物業'}} <i class="fas fa-home fa-5x"></i> {{/case}}
               {{#case '交通出行'}} <i class="fas fa-shuttle-van fa-5x"></i> {{/case}}

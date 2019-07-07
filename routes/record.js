@@ -53,4 +53,36 @@ router.post("/:id/delete", (req, res) => {
   });
 });
 
+router.get("/filter", (req, res) => {
+  console.log(req.query);
+  const filterMonth = req.query.month || "";
+  const filterCategory = req.query.category || "";
+  const filterMonthRegExp = new RegExp("2019-" + filterMonth, "i");
+  const filterCategoryRegExp = new RegExp(filterCategory, "i");
+
+  Record.find({
+    date: {
+      $regex: filterMonthRegExp
+    },
+    category: {
+      $regex: filterCategoryRegExp
+    }
+  }).exec((err, record) => {
+    if (err) return console.error(err);
+
+    let totalAmount = 0;
+    record.filter(({ amount }) => {
+      totalAmount += amount;
+    });
+
+    console.log(record);
+    return res.render("index", {
+      record,
+      totalAmount,
+      filterMonth,
+      filterCategory
+    });
+  });
+});
+
 module.exports = router;
