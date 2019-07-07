@@ -2,6 +2,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const User = require("../models/user");
 const session = require("express-session");
+const bcrypt = require("bcryptjs");
 
 module.exports = passport => {
   passport.use(
@@ -10,10 +11,14 @@ module.exports = passport => {
         if (!user) {
           return done(null, false, { message: "email 沒有註冊!" });
         }
-        if (user.password != password) {
-          return done(null, false, { message: "密碼有錯!" });
-        }
-        done(null, user);
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+          if (err) throw err;
+          if (isMatch) {
+            done(null, user);
+          } else {
+            return done(null, false, { message: "密碼有錯!" });
+          }
+        });
       });
     })
   );
