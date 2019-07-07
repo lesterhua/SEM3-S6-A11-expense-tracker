@@ -37,7 +37,9 @@ app.use(methodOverride("_method"));
 //define session
 app.use(
   session({
-    secret: "i2uih2ibviwbejfbwfuig"
+    secret: "i2uih2ibviwbejfbwfuig",
+    resave: "false",
+    saveUninitialized: "false"
   })
 );
 
