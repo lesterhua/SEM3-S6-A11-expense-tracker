@@ -53,6 +53,7 @@ require("./config/passport")(passport);
 //get data from the view
 app.use((req, res, next) => {
   res.locals.user = req.user;
+  res.locals.isAuthenticated = req.isAuthenticated;
   next();
 });
 
