@@ -15,7 +15,31 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/register", (req, res) => {
-  res.send("register action");
+  //const name = req.body.name .....
+  const { name, email, password, password2 } = req.body;
+  User.findOne({ email: email }).then(user => {
+    if (user) {
+      console.log("user is already exist!");
+      res.render("register", {
+        name,
+        email,
+        password,
+        password2
+      });
+    } else {
+      const newUser = new User({
+        name,
+        email,
+        password
+      });
+      newUser
+        .save()
+        .then(user => {
+          res.redirect("/");
+        })
+        .catch(err => console.log(err));
+    }
+  });
 });
 
 router.get("/logout", (req, res) => {
