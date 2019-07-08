@@ -11,6 +11,10 @@ require("./handlebars-helpers");
 
 const port = 3000;
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 //mongoose setting
 mongoose.connect("mongodb://localhost/record", {
   useNewUrlParser: true,
@@ -63,6 +67,7 @@ app.use((req, res, next) => {
 app.use("/", require("./routes/home"));
 app.use("/records", require("./routes/record"));
 app.use("/users", require("./routes/user"));
+app.use("/auth", require("./routes/auths"));
 
 app.listen(port, (req, res) => {
   console.log(`The app server is running on :http://localhost:${port}`);
