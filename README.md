@@ -81,15 +81,11 @@ FACEBOOK_CALLBACK=http://example.com/auth/facebook/callback
 
 ## 畫面 - Demo
 
-![alt text](https://github.com/lesterhua/SEM3-S5-A9-restaurant-list-CRUD-AUTH/blob/master/public/fb.gif)
+![alt text](https://github.com/lesterhua/SEM3-S6-A11-expense-tracker/blob/master/public/exp-new.gif)
 
-![alt text](https://github.com/lesterhua/SEM3-S5-A9-restaurant-list-CRUD-AUTH/blob/master/public/login-info.gif)
+![alt text](https://github.com/lesterhua/SEM3-S6-A11-expense-tracker/blob/master/public/exp-new.gif)
 
-![alt text](https://github.com/lesterhua/SEM3-S5-A9-restaurant-list-CRUD-AUTH/blob/master/public/register-info.gif)
-
-![alt text](https://github.com/lesterhua/SEM3-S5-A9-restaurant-list-CRUD-AUTH/blob/master/public/seeder1.gif)
-
-![alt text](https://github.com/lesterhua/SEM3-S5-A9-restaurant-list-CRUD-AUTH/blob/master/public/seeder2.gif)
+![alt text](https://github.com/lesterhua/SEM3-S6-A11-expense-tracker/blob/master/public/exp-sort.gif)
 
 ## 作者 - Authors
 
