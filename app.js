@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const passport = require("passport");
 const session = require("express-session");
+const flash = require("connect-flash");
 require("./handlebars-helpers");
 
 const port = 3000;
@@ -14,6 +15,9 @@ const port = 3000;
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
+
+//use connect-flash
+app.use(flash());
 
 //mongoose setting
 mongoose.connect("mongodb://localhost/record", {
@@ -60,6 +64,8 @@ require("./config/passport")(passport);
 app.use((req, res, next) => {
   res.locals.user = req.user;
   res.locals.isAuthenticated = req.isAuthenticated;
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.warning_msg = req.flash("warning_msg");
   next();
 });
 
