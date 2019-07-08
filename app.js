@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== "production") {
 app.use(flash());
 
 //mongoose setting
-mongoose.connect("mongodb://localhost/record", {
+mongoose.connect(" process.env.MONGODB_URI  || mongodb://localhost/record", {
   useNewUrlParser: true,
   useCreateIndex: true
 });
@@ -75,6 +75,6 @@ app.use("/records", require("./routes/record"));
 app.use("/users", require("./routes/user"));
 app.use("/auth", require("./routes/auths"));
 
-app.listen(port, (req, res) => {
+app.listen(process.env.PORT || port, (req, res) => {
   console.log(`The app server is running on :http://localhost:${port}`);
 });
