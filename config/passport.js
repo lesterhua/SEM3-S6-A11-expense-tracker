@@ -27,10 +27,9 @@ module.exports = passport => {
   passport.use(
     new FacebookStrategy(
       {
-        clientID: "1251151395054525",
-        clientSecret: "dcd877b1af926730e06b88eaf152dab8",
-        callbackURL:
-          "https://glacial-savannah-63876.herokuapp.com/auth/facebook/callback",
+        clientID: process.env.FACEBOOK_ID,
+        clientSecret: process.env.FACEBOOK_SECRET,
+        callbackURL: process.env.FACEBOOK_CALLBACK,
         profileFields: ["email", "displayName"]
       },
       (accessToken, refreshToken, profile, done) => {
