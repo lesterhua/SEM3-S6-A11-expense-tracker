@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== "production") {
 app.use(flash());
 
 //mongoose setting
-mongoose.connect(" process.env.MONGODB_URI || mongodb://localhost/record", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/record", {
   useNewUrlParser: true,
   useCreateIndex: true
 });

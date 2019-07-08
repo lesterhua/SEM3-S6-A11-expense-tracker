@@ -5,7 +5,7 @@ const spentList = require("../../spentList.json").results;
 const userList = require("../../users.json").results;
 const User = require("../user");
 
-mongoose.connect("process.env.MONGODB_URI ||mongodb://localhost/record", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/record", {
   useNewUrlParser: true,
   useCreateIndex: true
 });
